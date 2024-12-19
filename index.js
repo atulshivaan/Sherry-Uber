@@ -3,6 +3,7 @@ import express from "express"
 import dotenv from "dotenv"
 import connectDB from "./Db/connectDB.js";
 import  authRouter  from "./routes/user.routes.js";
+import captainRouter from "./routes/captain.route.js";
 dotenv.config()
 
 const app =express();
@@ -16,7 +17,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser())
 //routes
-app.use("/api/auth",authRouter)
+app.use("/api/user",authRouter)
+app.use("/api/captain",captainRouter)
 
 app.listen(port,(req,res)=>{
    connectDB();
